@@ -3,11 +3,7 @@
 
 ## Features
 
-- Configured **Featured Route** for login/signup pages (No Header and Footer, Only Page Content). 
-- Different routes setup **Authorized Route** and **Guest Route**.
 - Four different layout based on Auth-type (Admin, Client, Customer and Guest).
-- Added new **Ghost Route** only visible when required.
-- Added **Developer Dashboard**.
 - Fully **React** + **Redux Saga** based repo.
 - [Material design](https://material-ui.com/) and [Ant Design](http://ant.design/).
 
@@ -24,39 +20,21 @@
   - clientSubMenu
   - CustomerDashboardRouter
   - customerSubMenu
-  - DeveloperRouter
-  - devSubMenu
-  - FeatureRoute
-  - featureSubMenu
 - components
 - layouts
   - AdminDashboard
   - ClientDashboard
   - CustomerDashboard
   - LandingPage
-  - Feature (pages without header and footer)
-- models (reducers and actions)
-- routes (All pages)
+- models
+- routes
   - Admin
   - Client
   - Customer
   - Landing
   - Dashboard
-    - Analysis
-    - Monitor
-    - Workspace
-  - Form
-    - Basic Form
-    - Step Form
-    - Advanced From
-  - List
-    - Standard Table
-    - Standard List
-    - Card List
-    - Search List (Project/Applications/Article)
-  - Profile
-    - Simple Profile
-    - Advanced Profile
+  - Analytics
+  - Workspace
   - Result
     - Success
     - Failed
@@ -67,7 +45,6 @@
   - User
     - Login
     - Register
-    - Register Result
 - services
   - api
   - error
@@ -76,7 +53,7 @@
   - Authorized
   - GuestRoute
   - FeatureRoute
-  - Request (axios)
+  - Request
   - Utils
 ```
 
