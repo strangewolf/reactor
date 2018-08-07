@@ -1,16 +1,13 @@
 
-# Reactor
-
-## What's New
-
-- Added new **Ghost Route** for login/signup pages (No Header and Footer, Only Page Content).
-- Added **Developer Dashboard**.
-- Added **Preloader**.
+# Reactor (Coming Soon)
 
 ## Features
 
-- Configured **Feature Route**, **Authorize Route** and **Guest Route**.
+- Configured **Featured Route** for login/signup pages (No Header and Footer, Only Page Content). 
+- Different routes setup **Authorized Route** and **Guest Route**.
 - Four different layout based on Auth-type (Admin, Client, Customer and Guest).
+- Added new **Ghost Route** only visible when required.
+- Added **Developer Dashboard**.
 - Fully **React** + **Redux Saga** based repo.
 - [Material design](https://material-ui.com/) and [Ant Design](http://ant.design/).
 
