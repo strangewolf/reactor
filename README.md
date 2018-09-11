@@ -3,7 +3,7 @@
 
 ## Features
 
-- Four different layout based on Auth-type (Admin, Client, Customer and Guest).
+- Five different layouts based on Auth-type (Admin, Client, Customer, Developer and Guest).
 - Fully **React** + **Redux Saga** based repo.
 - [Material design](https://material-ui.com/) and [Ant Design](http://ant.design/).
 
