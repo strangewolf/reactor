@@ -63,7 +63,7 @@
 
 ```bash
 $ git clone *this repo path*
-$ cd billeasy_react
+$ cd reactor
 $ yarn
 $ yarn start         # visit http://localhost:8000
 ```
