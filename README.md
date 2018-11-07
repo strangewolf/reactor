@@ -1,13 +1,20 @@
 
-# Reactor (Coming Soon)
+# Reactor
 
-## Features
+# What's New
 
-- Five different layouts based on Auth-type (Admin, Client, Customer, Developer and Guest).
+- Added new **Feature Route** for login/signup pages (No Header and Footer, Only Page Content).
+- Added **Developer Dashboard**.
+- Added **Preloader**.
+
+# Features
+
+- Configured **Authorize Route** and **Guest Route**.
+- Four different layout based on Auth-type (Admin, Client, Customer and Guest).
 - Fully **React** + **Redux Saga** based repo.
 - [Material design](https://material-ui.com/) and [Ant Design](http://ant.design/).
 
-## Project Architecture
+# Project Architecture
 
 ```
 - assets
@@ -20,21 +27,39 @@
   - clientSubMenu
   - CustomerDashboardRouter
   - customerSubMenu
+  - DeveloperRouter
+  - devSubMenu
+  - FeatureRoute
+  - featureSubMenu
 - components
 - layouts
   - AdminDashboard
   - ClientDashboard
   - CustomerDashboard
   - LandingPage
-- models
-- routes
+  - Feature (pages without header and footer)
+- models (reducers and actions)
+- routes (All pages)
   - Admin
   - Client
   - Customer
   - Landing
   - Dashboard
-  - Analytics
-  - Workspace
+    - Analysis
+    - Monitor
+    - Workspace
+  - Form
+    - Basic Form
+    - Step Form
+    - Advanced From
+  - List
+    - Standard Table
+    - Standard List
+    - Card List
+    - Search List (Project/Applications/Article)
+  - Profile
+    - Simple Profile
+    - Advanced Profile
   - Result
     - Success
     - Failed
@@ -45,6 +70,7 @@
   - User
     - Login
     - Register
+    - Register Result
 - services
   - api
   - error
@@ -53,32 +79,40 @@
   - Authorized
   - GuestRoute
   - FeatureRoute
-  - Request
+  - Request (axios)
   - Utils
 ```
 
-## Usage
+# Usage
 
-# First Install Yarn
+## First Install Yarn
 
 ```bash
-$ git clone *this repo path*
+$ git clone https://arkaofficial@bitbucket.org/arkaofficial/reactor.git
 $ cd reactor
 $ yarn
-$ yarn start         # visit http://localhost:8000
+$ yarn start         ## visit http://localhost:8000
 ```
 
-##eslint-setup
+## Upgrade yarn command
 
-- Before start development please do install `Eslint`, no one like dirty codes.
+```bash
+yarn global add npm-check-updates
+ncu --upgrade --upgradeAll && yarn upgrade
+```
+NOTE: Set babel-eslint version to 8.2.6 in package.json once you run npm updates.`"babel-eslint": "^8.2.6",`
 
-# Step 1
+#Eslint-Setup
+
+Before start development please do install `Eslint`, no one like dirty codes.
+
+## Step 1
 
 `yarn add --save-dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y babel-eslint`
 
-- (Backup your eslintrc file in case you want to examine it.)
+(Backup your eslintrc file in case you want to examine it.)
 
-# Step 2
+## Step 2
 
 `eslint --init`
 - 1. Select 'Use a popular style guide'
@@ -86,11 +120,11 @@ $ yarn start         # visit http://localhost:8000
 - 3. Select your options, pick JSON type (.eslintrc is the old filename based on my - research, but it's the same thing)
 - 4. Allow it to update newer versions and/or install packages if it asks
 
-# Step 3
+## Step 3
 
 - Restart your editors
 
-# Step 4
+## Step 4
 
 Paste this into your `.eslintrc.json` :
 and remove my comments which will cause the JSON to blow up.
@@ -166,12 +200,46 @@ and remove my comments which will cause the JSON to blow up.
 }
 ```
 
-# Step 5
+## Step 5
 
 - `yarn add eslint-plugin-compat --save-dev`
 - restart server `yarn start`
 - restart your editor too
 
-## Extra
+# Extra
 
 - Remove `transform-decorators-legacy` from `.webpackrc.js` to solve this issue ```Module build failed: TypeError: Property right of AssignmentExpression expected node to be of a type ["Expression"] but instead got null at Array.map``` if you get from latest babel update.
+
+# Build & deploy
+
+- Run `yarn build` for production build. It will generate `/dist` folder which is production build.
+- Create an Express JS server to serve your production build `touch server.js`.
+- In server.js, copy/paste the following code:
+```
+    const express = require('express');
+    const path = require('path');
+
+    const port = process.env.PORT || 8080;
+    const app = express();
+
+    app.use(express.static(path.join(__dirname, '/dist')));
+
+    app.get('/*', function (req, res) {
+      res.sendFile(path.join(__dirname, '/dist', 'index.html'));
+    });
+
+    app.listen(port);
+```
+- In your package.json file, change the start script to the following:
+  to `start: "node server.js"`.
+- Remove `"start": "cross-env ESLINT=none roadhog dev"` & `"precommit": "npm run lint-staged"` (only for production push add it back for development).
+- Open `.gitignore` file add following code:
+
+```
+    #.gitignore
+    src/*
+    public/*
+```
+
+  and remove `/dist`(only for production push add it back for development).
+  This will only push production build to server rather than all files.
